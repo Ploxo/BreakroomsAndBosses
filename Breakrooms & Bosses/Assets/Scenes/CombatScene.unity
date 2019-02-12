@@ -1006,19 +1006,19 @@ MonoBehaviour:
   modifiers:
   - name: modifier
     stat: {fileID: 1270119135}
-    value: 1.05
+    value: 20
     chance: 50
   - name: modifier
     stat: {fileID: 1270119134}
-    value: 1
+    value: 20
     chance: 50
   - name: modifier
     stat: {fileID: 1270119133}
-    value: -1
+    value: -20
     chance: 50
   - name: modifier
     stat: {fileID: 1270119131}
-    value: 0
+    value: 20
     chance: 50
 --- !u!114 &412130438
 MonoBehaviour:
@@ -1057,10 +1057,8 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks:
-  - {fileID: 412130485}
-  selectedCommands:
-  - {fileID: 412130477}
+  selectedBlocks: []
+  selectedCommands: []
   variables:
   - {fileID: 412130442}
   - {fileID: 412130441}
@@ -2231,7 +2229,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &412130493
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 412130434}
