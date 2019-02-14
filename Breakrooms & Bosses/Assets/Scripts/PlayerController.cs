@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour {
     public float movementSpeed = 4.0f;
     [SerializeField] Animator animator;
 
+    [SerializeField] KeyCode interactKey = KeyCode.E;
+    [SerializeField] GameObject interactor;
+    [SerializeField] float interactorDistance;
+
     void Start () {
         animator.SetFloat("xDirection", 0);
         animator.SetFloat("yDirection", -1);
@@ -28,6 +32,13 @@ public class PlayerController : MonoBehaviour {
 
             if (xDirection != 0) {
                 yDirection = 0;
+
+                MoveInteractor(true, xDirection, interactorDistance);
+            }
+            else if (yDirection != 0)
+            {
+                MoveInteractor(false, yDirection, interactorDistance);
+
             }
 
             if (xDirection != 0 || yDirection != 0) {
@@ -35,6 +46,38 @@ public class PlayerController : MonoBehaviour {
             } else {
                animator.SetBool("isWalking", false);
             }
+
+            Interaction();
+        }
+    }
+
+    void MoveInteractor (bool isHorizontal, int value, float distance)
+    {
+        if(isHorizontal)
+        {
+            interactor.transform.position = transform.position + Vector3.right * distance * value;
+            Debug.Log("Indicator localePosition: " + interactor.transform.localPosition);
+        }
+        else
+        {
+            interactor.transform.position = transform.position + Vector3.up * distance * value;
+            Debug.Log("Indicator localePosition: " + interactor.transform.localPosition);
+
+        }
+
+
+    }
+
+    void Interaction ()
+    {
+        if (Input.GetKeyDown(interactKey))
+        {
+            interactor.GetComponent<Interaction>().isInteracting = true;
+        }
+
+        if (Input.GetKeyUp(interactKey))
+        {
+            interactor.GetComponent<Interaction>().isInteracting = false;
         }
     }
 

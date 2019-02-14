@@ -13,15 +13,18 @@ public class MenuLogic : MonoBehaviour
     public void OpenOptionsMenu ()
     {
         Debug.Log("Options menu not implemented");
+
     }
 
     public void ChangeScene (string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+
     }
 
     public void Exit ()
     {
         Application.Quit();
+
     }
 }

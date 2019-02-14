@@ -5,9 +5,17 @@ using UnityEngine.UI;
 
 public class ItemInfo : MonoBehaviour {
 
-    [SerializeField] Text textObject;
+    [SerializeField] public Sprite sprite;
+    [SerializeField] public Text textObject;
+    [SerializeField] public string topicName;
+    [SerializeField] public string text;
+    [SerializeField] public ItemType itemType;
 
-    [TextArea] [SerializeField] string text;
+
+    public enum ItemType
+    {
+        Topic, Object
+    }
 
     public void OnPointerEnter()
     {
