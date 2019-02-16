@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Influence : MonoBehaviour
 {
-    public float minValue = -100;
     public float maxValue = 100;
     public float influence = 0;
     public event System.Action<float> onInfluenceChange;
@@ -24,7 +23,6 @@ public class Influence : MonoBehaviour
             }
             influence = value;
             influence = Mathf.Min(maxValue, influence);
-            influence = Mathf.Max(minValue, influence);
             if (onInfluenceChange != null) {
                 onInfluenceChange(influence);
             }
