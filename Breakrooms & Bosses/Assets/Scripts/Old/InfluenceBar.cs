@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InfluenceBar : MonoBehaviour {
 
+    
+
     public float widthOfParent = 800;
     private RectTransform ourRect;
     [SerializeField]
@@ -23,10 +25,20 @@ public class InfluenceBar : MonoBehaviour {
 
     public void UpdateInfluence()
     {
+        float fillAmmount = influence.CurrentInfluence / influence.maxValue;
+        ourRect.offsetMax = new Vector2(-(widthOfParent - fillAmmount * widthOfParent), ourRect.offsetMax.y);
+
+        if(fillAmmount > 0.666)
+        {
+
+        }
+
+        /*
         float tempMax = Mathf.Abs(Influence.minValue) + Mathf.Abs(Influence.maxValue);
         float tempCurrent = Mathf.Abs(Influence.minValue) + Influence.CurrentInfluence;
         float ratio = tempCurrent / tempMax;
         ourRect.offsetMax = new Vector2(-(widthOfParent - ratio * widthOfParent), ourRect.offsetMax.y);
+        */
     }
 
     public void Awake()
