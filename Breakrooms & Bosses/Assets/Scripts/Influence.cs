@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Linq;
+using Fungus;
 
 public class Influence : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Influence : MonoBehaviour
     public event System.Action<float> onInfluenceChange;
     public event System.Action<string> onChoice;
     private Characteristics characteristics;
+    private Flowchart flowchart;
 
 
     public float CurrentInfluence
@@ -28,41 +30,30 @@ public class Influence : MonoBehaviour
 
     public void Start()
     {
+        flowchart = GetComponent<Flowchart>();
         characteristics = GetComponent<Characteristics>();
         CurrentInfluence = influence;
     }
 
     private float CalculateInfluenceBy(StatsChoice stat)
     {
-        /*
-        float influence = stat.Level;
-        if (characteristics != null) {
-            influence *=
-                characteristics
-                .modifiers
-                .Where(m => m.stat.GetType() == stat.GetType())
-                .DefaultIfEmpty(new Modifier() { value = 1 })
-                .Select(m => m.value)
-                .Aggregate(1f, (a, b) => a * b);
-
-            if (onChoice != null) {
-                onChoice(characteristics
-                .modifiers
-                .Where(m => m.stat.GetType() == stat.GetType())
-                .Select(m => m.stat.Name)
-                .First());
+        float dmg = 0;
+        int menuNum = flowchart.GetIntegerVariable("MenuNum")-1;
+        if (menuNum < characteristics.Dialogs.Length) {
+            foreach (var list in characteristics.Dialogs[menuNum].list) {
+                if (list.badChoice == stat) {
+                    dmg -= list.value;
+                }
             }
-
-
-        }*/
-
-
-        return 0;
+        }
+        if (onChoice != null) {
+            onChoice(stat.ToString());
+        }
+        return dmg;
     }
 
     public void EffectBy(ButtonStats stat)
     {
-        stat.statsOfButton.First();
         float influence = CalculateInfluenceBy(stat.statsOfButton.First());
         CurrentInfluence += influence;
 
