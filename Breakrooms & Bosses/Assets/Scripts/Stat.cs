@@ -5,7 +5,19 @@ using UnityEngine;
 public abstract class Stat : MonoBehaviour {
     [SerializeField]
     private int level = 1;
+    [SerializeField]
+    private string name = "";
     public static event System.Action<float> onChangeInfluenceBy;
+
+    public string Name
+    {
+        get {
+            return name;
+        }
+        protected set {
+            name = value;
+        }
+    }
 
     public int Level
     {

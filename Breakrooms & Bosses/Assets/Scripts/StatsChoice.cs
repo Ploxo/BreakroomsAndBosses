@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Stats {
+public enum StatsChoice {
     Lie,
     Flatter,
     Persuade,

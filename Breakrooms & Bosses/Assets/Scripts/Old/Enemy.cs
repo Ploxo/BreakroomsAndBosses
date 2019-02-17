@@ -5,8 +5,8 @@ using Fungus;
 
 public class Enemy : MonoBehaviour {
 
-    public List<Stats> goodAgainst = new List<Stats>();
-    public List<Stats> badAgainst = new List<Stats>();
+    /*public List<Stats> goodAgainst = new List<Stats>();
+    public List<Stats> badAgainst = new List<Stats>();*/
     public Flowchart enemyFlowChart;
 
 

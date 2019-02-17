@@ -95,7 +95,7 @@ public class BattleManager : MonoBehaviour
     public void attack(ButtonStats buttonStats)
     {
         bool oneChoiceMatched = false;
-        foreach (Stats btnStat in buttonStats.statsOfButton) {
+        /*foreach (Stats btnStat in buttonStats.statsOfButton) {
             foreach (Stats bad in enemy.badAgainst) {
                 if (bad == btnStat) {
                     enemy.enemyFlowChart.ExecuteBlock(successBlockName);
@@ -113,7 +113,7 @@ public class BattleManager : MonoBehaviour
         }
         if (!oneChoiceMatched) {
             enemy.enemyFlowChart.ExecuteBlock(nothingBlockName);
-        }
+        }*/
         battleUI.SetActive(false);
 
 
