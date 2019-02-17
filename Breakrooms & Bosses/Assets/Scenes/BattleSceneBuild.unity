@@ -1028,9 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2c91510d5a7b1468bf4d5c7ca8194a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minValue: -100
   maxValue: 100
-  influence: 0
+  influence: 100
 --- !u!114 &412130439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,7 +2313,7 @@ GameObject:
   - component: {fileID: 497458766}
   - component: {fileID: 497458765}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2408,7 +2407,7 @@ GameObject:
   - component: {fileID: 590480882}
   - component: {fileID: 590480881}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
