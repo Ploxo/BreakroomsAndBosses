@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Modifier
+public class badChoiceList
 {
-    [HideInInspector]
-    public string name = "modifier";
-    public Stat stat;
+    public StatsChoice badChoice;
     public float value = 1;
-    public int chance = 50;
+}
+
+[System.Serializable]
+public class DialogChoice
+{
+    public List<badChoiceList> list;
 }
 
 public class Characteristics : MonoBehaviour
 {
-    public Modifier[] modifiers;
-
+    public DialogChoice[] Dialogs;
 }

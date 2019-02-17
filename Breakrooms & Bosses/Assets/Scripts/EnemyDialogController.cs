@@ -11,15 +11,16 @@ public class EnemyDialogController : MonoBehaviour
 
         flowchart = GetComponent<Flowchart>();
         influence = GetComponent<Influence>();
-        influence.beforeInfluenceChangeBy += onInfluencedChangeBy;
+        influence.onChoice += choice;
 
 
     }
 
-    private void onInfluencedChangeBy(float value)
+    private void choice(string value)
     {
         if (!flowchart.GetBooleanVariable("isInMenu")) { return; }
         flowchart.SetBooleanVariable("isDone", true);
-        flowchart.SetBooleanVariable("isSuccess", (value > 0));
+        flowchart.SetStringVariable("yourChoice", value);
     }
+
 }

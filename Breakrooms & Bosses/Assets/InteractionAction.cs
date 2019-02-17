@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Stats {
-    Lie,
-    Flatter,
-    Persuade,
-    Intimidate
+public class InteractionAction {
+
+    public virtual void Interact ()
+    {
+
+    }
 }

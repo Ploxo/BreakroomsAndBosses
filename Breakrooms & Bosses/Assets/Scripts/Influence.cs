@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
+using Fungus;
 
 public class Influence : MonoBehaviour
 {
     public float maxValue = 100;
     public float influence = 0;
     public event System.Action<float> onInfluenceChange;
-    public event System.Action<float> beforeInfluenceChangeBy;
+    public event System.Action<string> onChoice;
     private Characteristics characteristics;
+    private Flowchart flowchart;
 
 
     public float CurrentInfluence
@@ -18,9 +19,7 @@ public class Influence : MonoBehaviour
         }
         private set {
             //Debug.Log(beforeInfluenceChangeBy.GetInvocationList().Count());
-            if (beforeInfluenceChangeBy != null) {
-                beforeInfluenceChangeBy(value-influence);
-            }
+
             influence = value;
             influence = Mathf.Min(maxValue, influence);
             if (onInfluenceChange != null) {
@@ -31,43 +30,32 @@ public class Influence : MonoBehaviour
 
     public void Start()
     {
+        flowchart = GetComponent<Flowchart>();
         characteristics = GetComponent<Characteristics>();
         CurrentInfluence = influence;
     }
 
-    private float CalculateInfluenceBy(Stat stat)
+    private float CalculateInfluenceBy(StatsChoice stat)
     {
-        float influence = stat.Level;
-        if (characteristics != null) {
-            int rand = Random.Range(0, 100);
-            foreach (Modifier m in characteristics.modifiers) {
-                if (m.stat.GetType() == stat.GetType()) {
-                    if (m.chance > rand) {
-                        influence *= -1;
-                    }
+        float dmg = 0;
+        int menuNum = flowchart.GetIntegerVariable("MenuNum")-1;
+        if (menuNum < characteristics.Dialogs.Length) {
+            foreach (var list in characteristics.Dialogs[menuNum].list) {
+                if (list.badChoice == stat) {
+                    dmg -= list.value;
                 }
             }
-
-
-
-                influence *=
-                    characteristics
-                    .modifiers
-                    .Where(m => m.stat.GetType() == stat.GetType())
-                    .DefaultIfEmpty(new Modifier() { value = 1 })
-                    .Select(m => m.value)
-                    .Aggregate(1f, (a, b) => a * b);
-            
-
         }
-        return influence;
+        if (onChoice != null) {
+            onChoice(stat.ToString());
+        }
+        return dmg;
     }
 
-    public void EffectBy(Stat stat)
+    public void EffectBy(ButtonStats stat)
     {
-        float influence = CalculateInfluenceBy(stat);
+        float influence = CalculateInfluenceBy(stat.statsOfButton.First());
         CurrentInfluence += influence;
 
     }
-
 }
