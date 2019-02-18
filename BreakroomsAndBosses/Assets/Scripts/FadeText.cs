@@ -12,7 +12,7 @@ public class FadeText : MonoBehaviour {
         //Grab current clips from the animator and store it in the array.
         AnimatorClipInfo[] clipInfo = animator.GetCurrentAnimatorClipInfo(0);
         Destroy(gameObject, clipInfo[0].clip.length);
-        damageText = animator.GetComponent<Text>();
+        damageText = animator.GetComponent<Text>(); //GetComponent from the object that has the animator and text on.
     }
 
     public void SetText(string text)

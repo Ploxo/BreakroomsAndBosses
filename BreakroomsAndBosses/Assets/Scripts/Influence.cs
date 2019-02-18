@@ -14,6 +14,7 @@ public class Influence : MonoBehaviour
 
     public float CurrentInfluence
     {
+    
         get {
             return influence;
         }
@@ -30,6 +31,7 @@ public class Influence : MonoBehaviour
 
     public void Start()
     {
+        //FadeTextController.CreateFadeText(amount.ToString(), transform);
         flowchart = GetComponent<Flowchart>();
         characteristics = GetComponent<Characteristics>();
         CurrentInfluence = influence;
