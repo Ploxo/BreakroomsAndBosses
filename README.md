@@ -12,3 +12,7 @@ This game is a single-player played on PC using a mouse and keyboard. The player
 
 ![chrome_2024-01-23_17-55-29](https://github.com/Ploxo/BreakroomsAndBosses/assets/47030482/3bdd0d38-2966-4a3f-9678-c17e0282d032)
 ![chrome_2024-01-23_22-05-24](https://github.com/Ploxo/BreakroomsAndBosses/assets/47030482/7abec897-60e9-4851-868f-b96fcf9ba514)
+
+## My contribution
+
+I programmed and coded a lot of miscellaneous things such as the health bar, the combat UI, a game save function, made sure the sound and music ran correctly, highlights on interactable objects, etc.
