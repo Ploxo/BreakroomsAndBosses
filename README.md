@@ -6,7 +6,7 @@ A single-player RPG game with visual novel elements.
 
 ## About
 
-This game was developed as part of a course during my bachelor's (the course was called 'Game Development 1')
+This game was developed as part of a course during my bachelor's (the course was called 'Game Development 1'). The game was made with Unity and coded in C# (.NET).
 
 This game is a single-player played on PC using a mouse and keyboard. The player's goal is to solve the mystery and figure out why the company is corrupt. The player reaches their goal by defeating enemies through 'debate-battles'. The player can walk around and explore the world and find various items that can help them with their battles.
 
